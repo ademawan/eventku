@@ -1,15 +1,10 @@
 package auth
 
 import (
-	"context"
-	"encoding/json"
 	"eventku/delivery/controllers/common"
 	"eventku/entities"
 	"eventku/middlewares"
 	"eventku/repository/auth"
-	"eventku/utils"
-	"fmt"
-	"io/ioutil"
 	"net/http"
 
 	"github.com/labstack/gommon/log"
@@ -78,69 +73,69 @@ func (ac *AuthController) Logout() echo.HandlerFunc {
 	}
 }
 
-func (ac *AuthController) LoginGoogle() echo.HandlerFunc {
-	return func(c echo.Context) error {
+// func (ac *AuthController) LoginGoogle() echo.HandlerFunc {
+// 	return func(c echo.Context) error {
 
-		googleConfig := utils.SetUpConfig()
-		url := googleConfig.AuthCodeURL("randomstate")
-		fmt.Println(url, "F GoogleLogin")
+// 		googleConfig := utils.SetUpConfig()
+// 		url := googleConfig.AuthCodeURL("randomstate")
+// 		fmt.Println(url, "F GoogleLogin")
 
-		return c.JSON(http.StatusSeeOther, common.Success(http.StatusOK, "successfully", url))
+// 		return c.JSON(http.StatusSeeOther, common.Success(http.StatusOK, "successfully", url))
 
-	}
-}
-func (ac *AuthController) LoginGoogleCallback() echo.HandlerFunc {
-	return func(c echo.Context) error {
-		state := c.QueryParam("state")
+// 	}
+// }
+// func (ac *AuthController) LoginGoogleCallback() echo.HandlerFunc {
+// 	return func(c echo.Context) error {
+// 		state := c.QueryParam("state")
 
-		if state != "randomstate" {
-			fmt.Println("states dont match")
-			return c.JSON(http.StatusBadRequest, common.InternalServerError(http.StatusBadRequest, state, nil))
+// 		if state != "randomstate" {
+// 			fmt.Println("states dont match")
+// 			return c.JSON(http.StatusBadRequest, common.InternalServerError(http.StatusBadRequest, state, nil))
 
-		}
-		code := c.QueryParam("code")
-		googleConfig := utils.SetUpConfig()
-		tokenGoogle, err := googleConfig.Exchange(context.Background(), code)
+// 		}
+// 		code := c.QueryParam("code")
+// 		googleConfig := utils.SetUpConfig()
+// 		tokenGoogle, err := googleConfig.Exchange(context.Background(), code)
 
-		if err != nil {
-			fmt.Print("code -Token Exchange Failed")
-		}
-		resp, err2 := http.Get("https://www.googleapis.com/oauth2/v2/userinfo?access_token=" + tokenGoogle.AccessToken)
-		userData, errresp := ioutil.ReadAll(resp.Body)
+// 		if err != nil {
+// 			fmt.Print("code -Token Exchange Failed")
+// 		}
+// 		resp, err2 := http.Get("https://www.googleapis.com/oauth2/v2/userinfo?access_token=" + tokenGoogle.AccessToken)
+// 		userData, errresp := ioutil.ReadAll(resp.Body)
 
-		if errresp != nil {
-			fmt.Println("JSON parsing failed", err2)
-		}
+// 		if errresp != nil {
+// 			fmt.Println("JSON parsing failed", err2)
+// 		}
 
-		var resGoogle UserLoginGoogle
-		json.Unmarshal(userData, &resGoogle)
+// 		var resGoogle UserLoginGoogle
+// 		json.Unmarshal(userData, &resGoogle)
 
-		checkedUser, err_repo := ac.repo.LoginGoogle(resGoogle.Email)
+// 		checkedUser, err_repo := ac.repo.LoginGoogle(resGoogle.Email)
 
-		if err_repo != nil {
-			var statusCode int = 500
-			if err_repo.Error() == "email not found" {
-				statusCode = http.StatusUnauthorized
-			} else if err_repo.Error() == "incorrect password" {
-				statusCode = http.StatusUnauthorized
-			}
-			return c.JSON(statusCode, common.InternalServerError(statusCode, err_repo.Error(), nil))
-		}
+// 		if err_repo != nil {
+// 			var statusCode int = 500
+// 			if err_repo.Error() == "email not found" {
+// 				statusCode = http.StatusUnauthorized
+// 			} else if err_repo.Error() == "incorrect password" {
+// 				statusCode = http.StatusUnauthorized
+// 			}
+// 			return c.JSON(statusCode, common.InternalServerError(statusCode, err_repo.Error(), nil))
+// 		}
 
-		token, _ := middlewares.GenerateToken(checkedUser)
+// 		token, _ := middlewares.GenerateToken(checkedUser)
 
-		response := UserLoginResponse{
-			User_uid: checkedUser.UserUid,
-			Name:     checkedUser.Name,
-			Email:    checkedUser.Email,
-			Gender:   checkedUser.Gender,
-			Token:    token,
-		}
+// 		response := UserLoginResponse{
+// 			User_uid: checkedUser.UserUid,
+// 			Name:     checkedUser.Name,
+// 			Email:    checkedUser.Email,
+// 			Gender:   checkedUser.Gender,
+// 			Token:    token,
+// 		}
 
-		return c.JSON(http.StatusSeeOther, common.Success(http.StatusOK, "successfully", response))
+// 		return c.JSON(http.StatusSeeOther, common.Success(http.StatusOK, "successfully", response))
 
-	}
-}
+// 	}
+// }
 func (ac *AuthController) Index() echo.HandlerFunc {
 	return func(c echo.Context) error {
 		type dataMap map[string]interface{}

@@ -1,19 +1,19 @@
 package auth
 
 import (
-	"database/sql"
 	"eventku/entities"
 	"eventku/middlewares"
-	"fmt"
 
 	"errors"
+
+	"gorm.io/gorm"
 )
 
 type AuthDb struct {
-	db *sql.DB
+	db *gorm.DB
 }
 
-func New(db *sql.DB) *AuthDb {
+func New(db *gorm.DB) *AuthDb {
 	return &AuthDb{
 		db: db,
 	}
@@ -22,22 +22,9 @@ func New(db *sql.DB) *AuthDb {
 func (ad *AuthDb) Login(email, password string) (entities.User, error) {
 	user := entities.User{}
 
-	err := ad.db.QueryRow("SELECT * FROM user WHERE email=?", email).Scan(&user.UserUid, &user.Name, &user.Email, &user.Password, &user.Address, &user.Gender, &user.CreatedAt, &user.DeletedAt, &user.DeletedAt)
-	if err != nil {
-		fmt.Println(err.Error())
+	if err := ad.db.Model(&user).Where("email = ?", email).First(&user).Error; err != nil {
 		return user, errors.New("email not found")
 	}
-
-	// for rows.Next() {
-	//     var err = rows.Scan(&user.UserUid, &user.Name, &user.Email,user.Password,user.Address,user.Gender,user.CreatedAt,user.DeletedAt)
-
-	//     if err != nil {
-	//         fmt.Println(err.Error())
-	//         return user,err
-	//     }
-
-	//     result = append(result, each)
-	// }
 
 	match := middlewares.CheckPasswordHash(password, user.Password)
 
@@ -48,13 +35,13 @@ func (ad *AuthDb) Login(email, password string) (entities.User, error) {
 	return user, nil
 }
 
-func (ad *AuthDb) LoginGoogle(email string) (entities.User, error) {
-	user := entities.User{}
+// func (ad *AuthDb) LoginGoogle(email string) (entities.User, error) {
+// 	user := entities.User{}
 
-	err := ad.db.QueryRow("SELECT * FROM user WHERE email=?", email).Scan(&user.UserUid, &user.Name, &user.Email, user.Password, user.Address, user.Gender, user.CreatedAt, user.DeletedAt)
-	if err != nil {
-		return user, errors.New("email not found")
-	}
+// 	err := ad.db.QueryRow("SELECT * FROM user WHERE email=?", email).Scan(&user.UserUid, &user.Name, &user.Email, user.Password, user.Address, user.Gender, user.CreatedAt, user.DeletedAt)
+// 	if err != nil {
+// 		return user, errors.New("email not found")
+// 	}
 
-	return user, nil
-}
+// 	return user, nil
+// }

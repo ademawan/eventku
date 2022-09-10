@@ -37,11 +37,7 @@ func (cv *CustomValidator) Validate(i interface{}) error {
 func main() {
 	config := configs.GetConfig()
 
-	db, err := utils.InitDB(config)
-	if err != nil {
-		panic("error database")
-	}
-	defer db.Close()
+	db := utils.InitDB(config)
 
 	authRepo := authRepo.New(db)
 	userRepo := userRepo.New(db)

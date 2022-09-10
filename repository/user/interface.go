@@ -8,6 +8,6 @@ type User interface {
 	Update(userUid string, newUser entities.User) (entities.User, error)
 	Delete(userUid string) error
 	//jika diperlukan
-	Search(q string) ([]entities.User, error)
-	Dummy(length int) bool
+	// Search(q string) ([]entities.User, error)
+	// Dummy(length int) bool
 }

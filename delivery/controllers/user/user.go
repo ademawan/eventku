@@ -112,20 +112,21 @@ func (ac *UserController) GetByUid() echo.HandlerFunc {
 		return c.JSON(http.StatusOK, common.ResponseUser(http.StatusOK, "Success get user", res))
 	}
 }
-func (ac *UserController) Search() echo.HandlerFunc {
-	return func(c echo.Context) error {
 
-		q := c.QueryParam("q")
+// func (ac *UserController) Search() echo.HandlerFunc {
+// 	return func(c echo.Context) error {
 
-		res, err := ac.repo.Search(q)
+// 		q := c.QueryParam("q")
 
-		if err != nil {
-			return c.JSON(http.StatusInternalServerError, common.ResponseUser(http.StatusInternalServerError, "internal server error for get all "+err.Error(), nil))
-		}
+// 		res, err := ac.repo.Search(q)
 
-		return c.JSON(http.StatusOK, common.ResponseUser(http.StatusOK, "Success Get all Room", res))
-	}
-}
+// 		if err != nil {
+// 			return c.JSON(http.StatusInternalServerError, common.ResponseUser(http.StatusInternalServerError, "internal server error for get all "+err.Error(), nil))
+// 		}
+
+// 		return c.JSON(http.StatusOK, common.ResponseUser(http.StatusOK, "Success Get all Room", res))
+// 	}
+// }
 
 func (ac *UserController) Update() echo.HandlerFunc {
 	return func(c echo.Context) error {
@@ -203,19 +204,20 @@ func (ac *UserController) Delete() echo.HandlerFunc {
 		return c.JSON(http.StatusOK, common.ResponseUser(http.StatusOK, "Success delete user", nil))
 	}
 }
-func (ac *UserController) Dummy() echo.HandlerFunc {
-	return func(c echo.Context) error {
 
-		q, _ := strconv.Atoi(c.QueryParam("length"))
+// func (ac *UserController) Dummy() echo.HandlerFunc {
+// 	return func(c echo.Context) error {
 
-		result := ac.repo.Dummy(q)
-		if !result {
-			return c.JSON(http.StatusInternalServerError, common.ResponseUser(http.StatusInternalServerError, "There is some error on server", nil))
-		}
-		return c.JSON(http.StatusOK, common.ResponseUser(http.StatusOK, "Success create user dummy", nil))
+// 		q, _ := strconv.Atoi(c.QueryParam("length"))
 
-	}
-}
+// 		result := ac.repo.Dummy(q)
+// 		if !result {
+// 			return c.JSON(http.StatusInternalServerError, common.ResponseUser(http.StatusInternalServerError, "There is some error on server", nil))
+// 		}
+// 		return c.JSON(http.StatusOK, common.ResponseUser(http.StatusOK, "Success create user dummy", nil))
+
+// 	}
+// }
 func (c *UserController) TimeToUser(timeInt int64) string {
 	if timeInt <= 0 {
 		return ""
