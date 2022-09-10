@@ -54,7 +54,7 @@ func initConfig() *AppConfig {
 	defaultConfig.Port = port
 	defaultConfig.Database.Driver = os.Getenv("DB_DRIVER")
 	defaultConfig.Database.Name = os.Getenv("DB_NAME")
-	defaultConfig.Database.Address = "localhost"
+	defaultConfig.Database.Address = os.Getenv("DB_HOST")
 	defaultConfig.Database.Port = portDB
 	defaultConfig.Database.Username = os.Getenv("DB_USERNAME")
 	defaultConfig.Database.Password = os.Getenv("DB_PASSWORD")
