@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <title>Google Maps API: Membuat Marker untuk Menandai Lokasi pada Peta</title>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrRyFQRMFTtT5i93OYN35Suc7VvDsyxuM&callback=initialize" async defer></script>
+<script type="text/javascript">
+    function initialize() {
+      var propertiPeta = {
+        center: new google.maps.LatLng(-6.3671599276521285, 106.7561711857214),
+        zoom: 5,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
+      };
+      
+      var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
+      
+      // membuat Marker
+      var marker=new google.maps.Marker({
+          position: new google.maps.LatLng(-6.209339, 106.847446),
+          map: peta
+      });
+    }
+    </script>
+
+</head>
+
+<body>
+    <div class="container-fluid" style=" padding: 0; background-color: #dcc9b7;;">
+        <div id="carouselExampleSlidesOnly margin-0" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/img/stay1type2.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <img style="width: 30%;" src="/img/lafadz2.png" alt="">
+            <p class="text-center greatvibessmall">Assalamu'alaikum Warahmatullahi
+                Wabarakatuh</p>
+            <p class="text-center">Dengan mengharap Ridho Allah SWT.<br>Kami Memohon Doa dan Restu untuk anak kami
+                tercinta<br>pada acara</p><br>
+            <h3 class="text-center greatvibes">Tasyakur Wallimatul Khitan</h3>
+            <h1 class="text-center" style="color: #899853;">Nama Anak</h1>
+            <p class="text-center"> Putra ke-2 dari bapak Abdul Rahman (Bomz) & ibu Hikmah Fajrina (Ima)</p>
+            <span class="divide text-center">--------------------------------------</span>
+            <p class="text-center"> yang insyaAllah akan dilaksanakan pada :</p>
+            <h2 class="text-center"> MINGGU, 18 SEPTEMBER 2022</h2>
+            <p class="text-center">DI KEDIAMAN KAMI</p>
+            <p class="text-center">Jl.Raya Pahlawan no.14 RT.002/009 Gg.ARBAA, kel.Cinangka </p>
+            <p class="text-center">Sawangan - Depok</p>
+            <span class="divide text-center">-------------------------------------</span>
+            <p class="text-center">Doa Untuk Anak Kami<br>Ya Allah Muliakanlah anak kami, Berkahkanlah umurnya<br>Terangkanlah hatinya, Teduhkanlah imannya<br>Perbaikilah amal perbuatannya, Lapangkanlah rezekinya<br>Dekatkanlah kepada kebaikan<br>dan Jauhkanlah dari Keburukan..Aamiin</p>
+            <p class="text-center">Atas kehadiran serta Doa Restu Bapak/Ibu/Saudara/i,<br>Kami ucapkan terimakasih</p>
+            <p class="text-center greatvibessmall">Wassalamu'alaikum Warahmatullahi
+                Wabarakatuh</p>
+
+
+
+        </div>
+        <div class="row">
+            <div>
+                <a href="http://maps.google.com?q=-6.3671599276521285,106.7561711857214"><img src="/img/location.png" style="width: 100%;" alt="click to location"></a>
+            </div>
+            <div id="googleMap" class="width:1100px;height:500px;"></div>
+        </div>
+        <div class="row">
+
+        </div>
+
+        
+    </div>
+   
+</body>
+
+</html>
