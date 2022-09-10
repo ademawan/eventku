@@ -5,7 +5,6 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/joho/godotenv"
 	"github.com/labstack/gommon/log"
 )
 
@@ -38,18 +37,19 @@ func GetConfig() *AppConfig {
 }
 
 func initConfig() *AppConfig {
-	err := godotenv.Load("local.env")
 
-	if err != nil {
-		log.Info(err)
+	port, errParse := strconv.Atoi(os.Getenv("PORT"))
+	if errParse != nil {
+		log.Warn(errParse)
 	}
+
 	portDB := os.Getenv("DB_PORT")
 
 	var defaultConfig AppConfig
-	port, errPort := strconv.Atoi(os.Getenv("APP_PORT"))
-	if errPort != nil {
-		log.Warn(errPort)
-	}
+	// port, errPort := strconv.Atoi(os.Getenv("APP_PORT"))
+	// if errPort != nil {
+	// 	log.Warn(errPort)
+	// }
 
 	defaultConfig.Port = port
 	defaultConfig.Database.Driver = os.Getenv("DB_DRIVER")
