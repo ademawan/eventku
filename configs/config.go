@@ -15,7 +15,7 @@ type AppConfig struct {
 		Driver   string
 		Name     string
 		Address  string
-		Port     int
+		Port     string
 		Username string
 		Password string
 	}
@@ -43,15 +43,12 @@ func initConfig() *AppConfig {
 	if err != nil {
 		log.Info(err)
 	}
-	portDB, errParse := strconv.Atoi(os.Getenv("DB_PORT"))
-	if errParse != nil {
-		log.Warn(errParse)
-	}
+	portDB := os.Getenv("DB_PORT")
 
 	var defaultConfig AppConfig
 	port, errPort := strconv.Atoi(os.Getenv("APP_PORT"))
 	if errPort != nil {
-		log.Warn(errParse)
+		log.Warn(errPort)
 	}
 
 	defaultConfig.Port = port
@@ -65,7 +62,7 @@ func initConfig() *AppConfig {
 	defaultConfig.GoogleClientID = os.Getenv("GOOGLE_CLIENT_ID")
 	defaultConfig.GoogleClientSecret = os.Getenv("GOOGLE_CLIENT_SECRET")
 
-	log.Info(defaultConfig)
+	// log.Info(defaultConfig)
 
 	return &defaultConfig
 }
