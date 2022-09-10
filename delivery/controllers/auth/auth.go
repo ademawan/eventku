@@ -140,7 +140,8 @@ func (ac *AuthController) Index() echo.HandlerFunc {
 	return func(c echo.Context) error {
 		type dataMap map[string]interface{}
 		data := dataMap{"message": "Hello World!"}
-		return c.Render(http.StatusOK, "index.html", data)
+		// return c.Render(http.StatusOK, "index.html", data)
+		return c.Render(http.StatusOK, "pengembangan.html", data)
 
 	}
 }
@@ -148,7 +149,7 @@ func (ac *AuthController) Post() echo.HandlerFunc {
 	return func(c echo.Context) error {
 		type dataMap map[string]interface{}
 		data := dataMap{"message": "Hello World!"}
-		return c.Render(http.StatusOK, "post.html", data)
+		return c.Render(http.StatusOK, "khitanan.html", data)
 
 	}
 }
