@@ -2,7 +2,7 @@ $(document).ready( function () {
 
 
     var audioElement = document.createElement('audio');
-    audioElement.setAttribute('src', '/sound/khitan.mp3');
+    audioElement.setAttribute('src', 'https://eventku.herokuapp.com/sound/khitan.mp3');
     
     audioElement.addEventListener('ended', function() {
         this.play();
