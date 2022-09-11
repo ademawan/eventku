@@ -21,6 +21,20 @@ body{
     
 
 }
+
+@media (max-width: 767.98px) {
+    .greatvibes{
+        font-size: 8vw;
+        font-family: 'Great Vibes', cursive;
+    }
+    .greatvibessmall{
+        font-size: 4vw !important;
+        font-family: 'Great Vibes', cursive !important;
+        
+    
+    }
+  }
+
 /* .rounded{
     width: 300px;
     height: 300px;
