@@ -5,6 +5,7 @@ import (
 	"strconv"
 	"sync"
 
+	"github.com/joho/godotenv"
 	"github.com/labstack/gommon/log"
 )
 
@@ -37,11 +38,11 @@ func GetConfig() *AppConfig {
 }
 
 func initConfig() *AppConfig {
-	// err := godotenv.Load("local.env")
+	err := godotenv.Load("local.env")
 
-	// if err != nil {
-	// 	log.Info(err)
-	// }
+	if err != nil {
+		log.Info(err)
+	}
 
 	port, errParse := strconv.Atoi(os.Getenv("PORT"))
 	if errParse != nil {

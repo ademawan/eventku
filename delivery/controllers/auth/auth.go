@@ -161,3 +161,19 @@ func (ac *AuthController) Dashboard() echo.HandlerFunc {
 
 	}
 }
+func (ac *AuthController) LoginPage() echo.HandlerFunc {
+	return func(c echo.Context) error {
+		type dataMap map[string]interface{}
+		data := dataMap{"message": "Hello World!"}
+		return c.Render(http.StatusOK, "login.html", data)
+
+	}
+}
+func (ac *AuthController) RegisterPage() echo.HandlerFunc {
+	return func(c echo.Context) error {
+		type dataMap map[string]interface{}
+		data := dataMap{"message": "Hello World!"}
+		return c.Render(http.StatusOK, "register.html", data)
+
+	}
+}

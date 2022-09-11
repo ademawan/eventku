@@ -21,7 +21,24 @@ body{
     
 
 }
-
+.imground{
+    width: 300px !important;
+    height: 300px;
+    background-color: salmon;
+    padding: 0 !important;
+    text-align: center;
+    line-height: 300px;
+    overflow: hidden;
+    border-radius:150px;
+}
+.imground a img{
+    width: 400px;
+    height: 300px;
+    size:cover;
+}
+.name{
+    text-shadow: 0 0 3px #faf3b2;
+}
 @media (max-width: 767.98px) {
     .greatvibes{
         font-size: 8vw;

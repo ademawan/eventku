@@ -27,6 +27,9 @@ func RegisterPath(e *echo.Echo,
 
 	//ROUTE index
 	e.GET("/", aa.Index())
+	e.GET("/login", aa.LoginPage())
+	e.GET("/register", aa.RegisterPage())
+
 	e.GET("/undangan/khitanan", aa.Post())
 	e.GET("/dashboard", aa.Dashboard())
 
