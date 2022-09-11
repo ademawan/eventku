@@ -22,22 +22,27 @@ body{
 
 }
 .imground{
-    width: 300px !important;
-    height: 300px;
+    width: 100% !important;
+    /* height: 100%; */
     background-color: salmon;
     padding: 0 !important;
     text-align: center;
-    line-height: 300px;
+    /* line-height: 300px; */
     overflow: hidden;
-    border-radius:150px;
+    /* border-radius:150px; */
 }
 .imground a img{
-    width: 400px;
-    height: 300px;
-    size:cover;
+    width: 100%;
+   
 }
 .name{
     text-shadow: 0 0 3px #faf3b2;
+}
+.divide{
+    border-top: 3px solid #d5ac09;
+        display:block;
+    width: 20% !important;
+    margin-bottom: 10px;
 }
 @media (max-width: 767.98px) {
     .greatvibes{
@@ -49,6 +54,15 @@ body{
         font-family: 'Great Vibes', cursive !important;
         
     
+    }
+    .maps{
+        margin: 0 10% 0 10% !important;
+    }
+    .divide{
+        border-top: 3px solid #d5ac09;
+            display:block;
+        width: 30% !important;
+        margin-bottom: 10px;
     }
   }
 
@@ -66,3 +80,20 @@ body{
     width: 100%;
     size: ;
 } */
+
+/* html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .full-height {
+    height: 100%;
+    background: yellow;
+  }
+  </style>
+  
+  </head>
+  <body>
+  
+  <div class="full-height">I am a DIV that will stretch to fit the whole width and height of the browser window!</div>
+   */

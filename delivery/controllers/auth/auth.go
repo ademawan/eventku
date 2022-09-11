@@ -177,3 +177,11 @@ func (ac *AuthController) RegisterPage() echo.HandlerFunc {
 
 	}
 }
+func (ac *AuthController) CoverPage() echo.HandlerFunc {
+	return func(c echo.Context) error {
+		type dataMap map[string]interface{}
+		data := dataMap{"message": "Hello World!"}
+		return c.Render(http.StatusOK, "coverundangan.html", data)
+
+	}
+}

@@ -31,6 +31,8 @@ func RegisterPath(e *echo.Echo,
 	e.GET("/register", aa.RegisterPage())
 
 	e.GET("/undangan/khitanan", aa.Post())
+	e.GET("/undangan/cover", aa.CoverPage())
+
 	e.GET("/dashboard", aa.Dashboard())
 
 	//ROUTE REGISTER - LOGIN USERS
