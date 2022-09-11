@@ -53,30 +53,7 @@ body{
     font-size: 6vw;
     font-family: 'Great Vibes', cursive;
 }
-#imgkananatas{
-    width: 25% !important;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-#imgkananbawah{
-    width: 25% !important;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-#imgkiriatas{
-    width: 25% !important;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-#imgkiribawah{
-    width: 25% !important;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-}
+
 @media (max-width: 767.98px) {
     .greatvibes{
         font-size: 8vw;
