@@ -16,38 +16,30 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrRyFQRMFTtT5i93OYN35Suc7VvDsyxuM&callback=initialize"
-        async defer></script>
-    <script type="text/javascript">
-        function initialize() {
-            var propertiPeta = {
-                center: new google.maps.LatLng(-6.3671599276521285, 106.7561711857214),
-                zoom: 5,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-
-            var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
-
-            // membuat Marker
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(-6.209339, 106.847446),
-                map: peta
-            });
-        }
-    </script>
-
 </head>
 
 <body>
     <div class="visible" style="position:absolute;">
-
+<!-- 
     <audio id="audioID" controls autoplay="true">
         <source src="horse.ogg" type="audio/ogg">
         <source src="/sound/khitan.mp3" type="audio/mp3">
         Your browser does not support the audio element.
-    </audio>
-    </div>
+    </audio> -->
+    <h2>Sound Information</h2>
+    <div id="length">Duration:</div>
+    <div id="source">Source:</div>
+    <div id="status" style="color:red;">Status: Loading</div>
+    <hr>
+    <h2>Control Buttons</h2>
+    <button id="play">Play</button>
+    <button id="pause">Pause</button>
+    <button id="restart">Restart</button>
+    <hr>
+    <h2>Playing Information</h2>
+    <div id="currentTime">0</div>
+</div>
+
     <div class="container-fluid pb-5" style=" padding: 0; background-color: #dcc9b7;;">
         <div id="carouselExampleSlidesOnly margin-0" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
