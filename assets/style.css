@@ -44,6 +44,16 @@ body{
     width: 20% !important;
     margin-bottom: 10px;
 }
+.full-height {
+    min-height: 100% !important;
+    background-color: yellow;
+    position: relative;
+  }
+.centerundangan{
+    font-size: 6vw;
+    font-family: 'Great Vibes', cursive;
+}
+
 @media (max-width: 767.98px) {
     .greatvibes{
         font-size: 8vw;
@@ -52,8 +62,10 @@ body{
     .greatvibessmall{
         font-size: 4vw !important;
         font-family: 'Great Vibes', cursive !important;
-        
-    
+    }
+    .centerundangan{
+        font-size: 7vw;
+        font-family: 'Great Vibes', cursive;
     }
     .maps{
         margin: 0 10% 0 10% !important;
@@ -64,7 +76,56 @@ body{
         width: 30% !important;
         margin-bottom: 10px;
     }
+
+    #imgkananatas{
+        width: 50% !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    #imgkananbawah{
+        width: 50% !important;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+    #imgkiriatas{
+        width: 50% !important;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    #imgkiribawah{
+        width: 50% !important;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
   }
+#imgkananatas{
+    width: 25%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+#imgkananbawah{
+    width: 25%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+#imgkiriatas{
+    width: 25%;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#imgkiribawah{
+    width: 25%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
 
 /* .rounded{
     width: 300px;
